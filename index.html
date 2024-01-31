@@ -2518,7 +2518,7 @@
 												data-widget_type="button.default">
 												<div class="elementor-widget-container">
 													<div class="elementor-button-wrapper">
-														<a class="elementor-button elementor-size-xs" role="button">
+														<a class="elementor-button elementor-size-xs" role="button" id="get-direction-button1">
 															<span class="elementor-button-content-wrapper">
 																<span class="elementor-button-text">Get Direction</span>
 															</span>
@@ -2639,7 +2639,7 @@
 												data-widget_type="button.default">
 												<div class="elementor-widget-container">
 													<div class="elementor-button-wrapper">
-														<a class="elementor-button elementor-size-xs" role="button">
+														<a class="elementor-button elementor-size-xs" role="button" id="get-direction-button2">
 															<span class="elementor-button-content-wrapper">
 																<span class="elementor-button-text">Get Direction</span>
 															</span>
@@ -2649,6 +2649,19 @@
 											</div>
 										</div>
 									</div>
+
+									<script>
+
+										document.getElementById("get-direction-button1").onclick = function () {
+											let url = `https://maps.app.goo.gl/Rz3BRWF2XCnyRhxB7`;
+											window.open(url, '_blank').focus();
+										}
+
+										document.getElementById("get-direction-button2").onclick = function () {
+											let url = `https://maps.app.goo.gl/Rz3BRWF2XCnyRhxB7`;
+											window.open(url, '_blank').focus();
+										}
+									</script>
 								</div>
 							</section>
 						</div>
@@ -2754,7 +2767,7 @@
 								data-widget_type="button.default">
 								<div class="elementor-widget-container">
 									<div class="elementor-button-wrapper">
-										<a class="elementor-button elementor-size-xs" role="button">
+										<a class="elementor-button elementor-size-xs" role="button" id="add-to-calender-button">
 											<span class="elementor-button-content-wrapper">
 												<span class="elementor-button-text">Add to Calendar</span>
 											</span>
@@ -2762,6 +2775,12 @@
 									</div>
 								</div>
 							</div>
+							<script>
+								document.getElementById("add-to-calender-button").onclick = function () {
+									let url = `https://calendar.google.com/calendar/u/0/r/eventedit?text=The+Wedding+of+Dama+and+Wulan&details=The+Wedding+of+Dama+and+Wulan+%7C+3+Maret+2024+%7C+Jl.+Raya+Pd.+Ranggon+Barat+No.+11+Kec.+Cipayung,+Kota+Jakarta+Timur+%7C+08.00+-+12.00+WIB&dates=20240303T080000/20240303T120000&location=https://maps.app.goo.gl/Rz3BRWF2XCnyRhxB7`;
+									window.open(url, '_blank').focus();
+								}
+							</script>
 						</div>
 					</div>
 				</div>
@@ -3086,7 +3105,9 @@
 																				data-element_type="widget"
 																				data-widget_type="text-editor.default">
 																				<div class="elementor-widget-container">
-																					<p><b>BCA</b></p>
+																					<p>
+																						<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg">
+																					</p>
 																				</div>
 																			</div>
 																		</div>
@@ -3109,7 +3130,7 @@
 																				data-element_type="widget"
 																				data-widget_type="text-editor.default">
 																				<div class="elementor-widget-container">
-																					<p>123123123</p>
+																					<p>1110189610</p>
 																				</div>
 																			</div>
 																			<div class="elementor-element elementor-element-f995731 b f1 wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
@@ -3117,7 +3138,7 @@
 																				data-element_type="widget"
 																				data-widget_type="text-editor.default">
 																				<div class="elementor-widget-container">
-																					<p>an. Lorem Ipsum</p>
+																					<p>an. Rajendra Gusti Primadama</p>
 																				</div>
 																			</div>
 																			<div class="elementor-element elementor-element-727c2ec3 elementor-align-justify btn2 wdp-sticky-section-no elementor-widget elementor-widget-button"
@@ -3162,7 +3183,7 @@
 
 
 																						document.getElementById("copy1a").onclick = function () {
-																							copyToClipboard('00');
+																							copyToClipboard('1110189610');
 																							$("#copy1a span").text("Copied!")
 
 																						}
@@ -3194,7 +3215,9 @@
 																				data-element_type="widget"
 																				data-widget_type="text-editor.default">
 																				<div class="elementor-widget-container">
-																					<p><b>BCA</b></p>
+																					<p>
+																						<img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" height="150px">
+																					</p>
 																				</div>
 																			</div>
 																		</div>
@@ -3218,7 +3241,7 @@
 																				data-element_type="widget"
 																				data-widget_type="text-editor.default">
 																				<div class="elementor-widget-container">
-																					<p>123123123</p>
+																					<p>081289628988</p>
 																				</div>
 																			</div>
 																			<div class="elementor-element elementor-element-136c286c b f1 wdp-sticky-section-no elementor-widget elementor-widget-text-editor"
@@ -3226,7 +3249,7 @@
 																				data-element_type="widget"
 																				data-widget_type="text-editor.default">
 																				<div class="elementor-widget-container">
-																					<p>an. Lorem Ipsum</p>
+																					<p>an. Trie Wulan Sari</p>
 																				</div>
 																			</div>
 																			<div class="elementor-element elementor-element-6022cfa4 elementor-align-justify btn2 wdp-sticky-section-no elementor-widget elementor-widget-button"
@@ -3258,7 +3281,7 @@
 
 
 																						document.getElementById("copy2a").onclick = function () {
-																							copyToClipboard('00');
+																							copyToClipboard('081289628988');
 																							$("#copy2a span").text("Copied!")
 
 																						}
