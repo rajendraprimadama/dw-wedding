@@ -2864,15 +2864,14 @@
 												data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
 												data-widget_type="form.default">
 												<div class="elementor-widget-container">
-													<form class="elementor-form" method="post" id="myForm">
-
+													<form method="post" id="myForm">
 														<div
 															class="elementor-form-fields-wrapper elementor-labels-above">
 															<div
 																class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100 elementor-field-required elementor-mark-required">
 																<label for="form-field-name"
 																	class="elementor-field-label">Name</label><input
-																	size="1" type="text" name="form_fields[name]"
+																	size="1" type="text" name="nama"
 																	id="form-field-name"
 																	class="elementor-field elementor-size-sm  elementor-field-textual"
 																	placeholder="Name" required="required"
@@ -2883,7 +2882,7 @@
 																<label for="form-field-pesan"
 																	class="elementor-field-label">Wishes</label><textarea
 																	class="elementor-field-textual elementor-field  elementor-size-sm"
-																	name="form_fields[pesan]" id="form-field-pesan"
+																	name="ucapan" id="form-field-pesan"
 																	rows="4" placeholder="Wishes" required="required"
 																	aria-required="true"></textarea>
 															</div>
@@ -2895,16 +2894,16 @@
 																<div
 																	class="elementor-field-subgroup  elementor-subgroup-inline">
 																	<span class="elementor-field-option"><input
-																			type="radio" value="Yes"
+																			type="radio" value="1"
 																			id="form-field-hadir-0"
-																			name="form_fields[hadir]"
+																			name="kehadiran"
 																			required="required" aria-required="true">
 																		<label
 																			for="form-field-hadir-0">Yes</label></span><span
 																		class="elementor-field-option"><input
-																			type="radio" value="No"
+																			type="radio" value="0"
 																			id="form-field-hadir-1"
-																			name="form_fields[hadir]"
+																			name="kehadiran"
 																			required="required" aria-required="true">
 																		<label
 																			for="form-field-hadir-1">No</label></span>
@@ -2918,11 +2917,11 @@
 																	class="elementor-field-subgroup  elementor-subgroup-inline">
 																	<span class="elementor-field-option"><input
 																			type="radio" value="1" id="form-field-jtm-0"
-																			name="form_fields[jtm]"> <label
+																			name="jumlah_kehadiran"> <label
 																			for="form-field-jtm-0">1</label></span><span
 																		class="elementor-field-option"><input
 																			type="radio" value="2" id="form-field-jtm-1"
-																			name="form_fields[jtm]"> <label
+																			name="jumlah_kehadiran"> <label
 																			for="form-field-jtm-1">2</label></span>
 																</div>
 															</div>
@@ -2993,6 +2992,43 @@
 															doa.innerHTML = data.map(e => `<div class="chat"><span ><b> ${decodeURI(e.nama)}</b> 
 															<br/>${decodeURI(e.ucapan)}<br>
 															</span></div>`).join("");
+														});
+
+														document.getElementById("myForm").addEventListener("submit", (e) => {
+															e.preventDefault();
+															let formData = new FormData();
+															formData.append('nama', document.getElementsByName("nama")[0].value);
+															formData.append('ucapan', document.getElementsByName("ucapan")[0].value);
+															formData.append('kehadiran', document.getElementsByName("kehadiran")[0].value);
+															formData.append('jumlah_kehadiran', document.getElementsByName("jumlah_kehadiran")[0].value);
+															
+															fetch("https://isoman.dephub.go.id/nuansatent/api/rsvp/store",
+															{
+																body: formData,
+																method: "post",
+																dataType: 'json',
+															}).then(response => response.json())
+															.then(data => {
+																data = data.data.filter(v => { return v.ucapan != "" })
+																let ucapan = []
+
+																data.map(v => {
+																	ucapan.push(`
+																		<p>
+																			<b>
+																			${v.nama}
+																			</b><br/>
+																			${v.ucapan}
+																		</p>
+																	`)
+																})
+
+																let doa = document.getElementsByClassName("ucapan-doa")[0]
+																doa.innerHTML = data.map(e => `<div class="chat"><span ><b> ${decodeURI(e.nama)}</b> 
+																<br/>${decodeURI(e.ucapan)}<br>
+																</span></div>`).join("");
+															});
+														// handle submit
 														});
 													</script>
 												</div>
