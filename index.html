@@ -2864,14 +2864,7 @@
 												data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}"
 												data-widget_type="form.default">
 												<div class="elementor-widget-container">
-													<form class="elementor-form" method="post" id="myForm"
-														name="New Form">
-														<input type="hidden" name="post_id" value="85158" />
-														<input type="hidden" name="form_id" value="65b7759d" />
-														<input type="hidden" name="referer_title"
-															value="Catalog Gold Dahlia - Possible Wedding" />
-
-														<input type="hidden" name="queried_id" value="85158" />
+													<form class="elementor-form" method="post" id="myForm">
 
 														<div
 															class="elementor-form-fields-wrapper elementor-labels-above">
@@ -2933,11 +2926,8 @@
 																			for="form-field-jtm-1">2</label></span>
 																</div>
 															</div>
-															<div
-																class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-																<button type="submit"
-																	class="elementor-button elementor-size-sm"
-																	id="submith">
+															<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+																<button type="submit" class="elementor-button elementor-size-sm" id="submith">
 																	<span>
 																		<span class=" elementor-button-icon">
 																		</span>
@@ -2976,31 +2966,34 @@
 												data-widget_type="html.default">
 												<div class="elementor-widget-container">
 													<script>
-														fetch('https://s3.ap-southeast-1.wasabisys.com/prewed/ucapan-catalog.json')
-															.then(response => response.json())
-															.then(data => {
-																data = data.filter(v => { return v.pesan != "" })
-																let ucapan = []
+														fetch('https://isoman.dephub.go.id/nuansatent/api/rsvp/list', {
+															method: 'POST',
+															headers: {
+																'Accept': 'application/json',
+																'Content-Type': 'application/json'
+															}
+														})
+														.then(response => response.json())
+														.then(data => {
+															data = data.data.filter(v => { return v.ucapan != "" })
+															let ucapan = []
 
-																data.map(v => {
-																	ucapan.push(`
-          <p >
-          <b>
-          ${v.dari}
-          </b><br/>
-          ${v.pesan}
-          </p>
-          `)
-																})
-																let doa = document.getElementsByClassName("ucapan-doa")[0]
-																doa.innerHTML = data.map(e => `<div class="chat"><span ><b> ${decodeURI(e.dari)}</b> 
-            <br/>${decodeURI(e.pesan)}<br>
-            </span></div>`).join("");
+															data.map(v => {
+																ucapan.push(`
+																	<p>
+																		<b>
+																		${v.nama}
+																		</b><br/>
+																		${v.ucapan}
+																	</p>
+																`)
+															})
 
-															});
-
-
-
+															let doa = document.getElementsByClassName("ucapan-doa")[0]
+															doa.innerHTML = data.map(e => `<div class="chat"><span ><b> ${decodeURI(e.nama)}</b> 
+															<br/>${decodeURI(e.ucapan)}<br>
+															</span></div>`).join("");
+														});
 													</script>
 												</div>
 											</div>
