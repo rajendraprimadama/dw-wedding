@@ -217,6 +217,28 @@
 			margin-top: 0;
 			margin-bottom: 0
 		}
+
+		.loading {
+			width: 2rem;
+			height: 2rem;
+			border: 5px solid #f3f3f3;
+			border-top: 6px solid #9c41f2;
+			border-radius: 100%;
+			margin: auto;
+			visibility: hidden;
+			animation: spin 1s infinite linear;
+		}
+		.loading.display {
+			visibility: visible;
+		}
+		@keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
 	</style>
 	<style id='global-styles-inline-css'>
 		body {
@@ -2879,8 +2901,7 @@
 												data-widget_type="form.default">
 												<div class="elementor-widget-container">
 													<form method="post" id="myForm">
-														<div
-															class="elementor-form-fields-wrapper elementor-labels-above">
+														<div class="elementor-form-fields-wrapper elementor-labels-above">
 															<div
 																class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100 elementor-field-required elementor-mark-required">
 																<label for="form-field-name"
@@ -2948,6 +2969,10 @@
 																	</span>
 																</button>
 															</div>
+
+															<div class="loader-container">
+																<div class="loader"></div>
+															</div>
 														</div>
 													</form>
 												</div>
@@ -2979,6 +3004,7 @@
 												data-widget_type="html.default">
 												<div class="elementor-widget-container">
 													<script>
+														
 														fetch('https://isoman.dephub.go.id/nuansatent/api/rsvp/list', {
 															method: 'POST',
 															headers: {
@@ -3015,7 +3041,7 @@
 															formData.append('ucapan', document.getElementsByName("ucapan")[0].value);
 															formData.append('kehadiran', document.getElementsByName("kehadiran")[0].value);
 															formData.append('jumlah_kehadiran', document.getElementsByName("jumlah_kehadiran")[0].value);
-															
+
 															fetch("https://isoman.dephub.go.id/nuansatent/api/rsvp/store",
 															{
 																body: formData,
@@ -3026,6 +3052,7 @@
 																data = data.data.filter(v => { return v.ucapan != "" })
 																let ucapan = []
 
+																document.getElementById("myForm").reset();
 																data.map(v => {
 																	ucapan.push(`
 																		<p>
