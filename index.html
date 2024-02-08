@@ -2964,26 +2964,19 @@
 																<label for="form-field-hadir"
 																	class="elementor-field-label">Will You
 																	Attend?</label>
-																<div
-																	class="elementor-field-subgroup  elementor-subgroup-inline">
-																	<span class="elementor-field-option"><input
-																			type="radio" value="1"
-																			id="form-field-hadir-0"
-																			name="kehadiran"
-																			required="required" aria-required="true">
-																		<label
-																			for="form-field-hadir-0">Yes</label></span><span
-																		class="elementor-field-option"><input
-																			type="radio" value="0"
-																			id="form-field-hadir-1"
-																			name="kehadiran"
-																			required="required" aria-required="true">
-																		<label
-																			for="form-field-hadir-1">No</label></span>
+																<div class="elementor-field-subgroup  elementor-subgroup-inline">
+																	<span class="elementor-field-option">
+																		<input type="radio" value="1" id="form-field-hadir-0" name="kehadiran" required="required" aria-required="true">
+																		<label for="form-field-hadir-0">Yes</label>
+																	</span>
+																	<span class="elementor-field-option">
+																		<input type="radio" value="0" id="form-field-hadir-1" name="kehadiran" required="required" aria-required="true">
+																		<label for="form-field-hadir-1">No</label>
+																	</span>
 																</div>
 															</div>
 															<div
-																class="elementor-field-type-radio elementor-field-group elementor-column elementor-field-group-jtm elementor-col-100">
+																class="elementor-field-type-radio elementor-field-group elementor-column elementor-field-group-jtm elementor-col-100" id="jumlah-kehadiran" style="display: none;">
 																<label for="form-field-jtm"
 																	class="elementor-field-label">No. of Guests</label>
 																<div
@@ -3113,6 +3106,15 @@
 																}, 4000);
 															});
 														});
+
+														document.getElementById('form-field-hadir-0').onclick = function () {
+															document.getElementById("jumlah-kehadiran").style.display = "block"
+															document.getElementById("form-field-jtm-0").checked = true;
+														}
+
+														document.getElementById('form-field-hadir-1').onclick = function () {
+															document.getElementById("jumlah-kehadiran").style.display = "none"
+														}
 													</script>
 												</div>
 											</div>
