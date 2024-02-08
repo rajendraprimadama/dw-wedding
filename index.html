@@ -3069,10 +3069,12 @@
 															e.preventDefault();
 															document.getElementById('loader-container').style.display = 'block';
 															let formData = new FormData();
+															alert(document.querySelector('input[name="kehadiran"]:checked').value);
+															debugger;
 															formData.append('nama', document.getElementsByName("nama")[0].value);
 															formData.append('ucapan', document.getElementsByName("ucapan")[0].value);
-															formData.append('kehadiran', document.getElementsByName("kehadiran")[0].value);
-															formData.append('jumlah_kehadiran', document.getElementsByName("jumlah_kehadiran")[0].value);
+															formData.append('kehadiran', document.querySelector('input[name="kehadiran"]:checked').value);
+															formData.append('jumlah_kehadiran', document.querySelector('input[name="jumlah_kehadiran"]:checked').value);
 
 															fetch("https://isoman.dephub.go.id/nuansatent/api/rsvp/store",
 															{
