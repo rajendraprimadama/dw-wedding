@@ -3072,7 +3072,7 @@
 															formData.append('nama', document.getElementsByName("nama")[0].value);
 															formData.append('ucapan', document.getElementsByName("ucapan")[0].value);
 															formData.append('kehadiran', document.querySelector('input[name="kehadiran"]:checked').value);
-															formData.append('jumlah_kehadiran', document.querySelector('input[name="jumlah_kehadiran"]:checked').value);
+															formData.append('jumlah_kehadiran', document.querySelector('input[name="kehadiran"]:checked').value == 1 ? document.querySelector('input[name="jumlah_kehadiran"]:checked').value : 0);
 
 															fetch("https://isoman.dephub.go.id/nuansatent/api/rsvp/store",
 															{
